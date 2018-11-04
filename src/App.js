@@ -1,12 +1,42 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
 import './App.css';
-import Emp from './emp';
+
+//import Emp from './emp';
+
+import Home from './home';
+import Login from './login';
 
 class App extends Component {
 
-    state = {
+    render() {
+        return (
+            <Router>
+                <div>
+                    <h2>Welcome to React Router Example</h2>
+                    <ul>
+                        <li>
+                            <Link to={'/'}>Home</Link>
+                        </li>
+                        <li>
+                            <Link to={'/login'}>Login</Link>
+                        </li>
+                    </ul>
+
+                    <hr/>
+
+                    <Switch>
+                        <Route exact path='/' component={Home}/>
+                        <Route exact path='/login' component={Login}/>
+                    </Switch>
+                </div>
+            </Router>
+        );
+    }
+
+
+    /*state = {
         employees: [
             {id: 101, name: 'Paul', salary: 5000},
             {id: 102, name: 'Sam', salary: 2000},
@@ -44,7 +74,7 @@ class App extends Component {
                 </table>
             </div>
         );
-    }
+    }*/
 }
 
 export default App;
